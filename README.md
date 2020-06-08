@@ -1,8 +1,8 @@
 
 # T3020   Repo for ELEN3020
 
-Name: Scott Hazelhurst
-Date: 7 June
+Name: Brenton Bulder 1827655
+Date: 8 June 2020
 
 
 # Description of code -- for question 1.1 and 1.2
