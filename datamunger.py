@@ -10,10 +10,10 @@ import sys
 # python3 datamunger.py https://raw.githubusercontent.com/shaze/t3020/master/data.csv
 # fetches the data from the repo
 # or
-# python3 datamunger.py see.csv
+# python3 datamunger.py data.csv
 # gets data from same directory
 
-origin=sys.argv[1]
+
 
 def calc_total(curr):
     computed=0
@@ -25,16 +25,22 @@ def calc_total(curr):
 def check_monotonic(n,prev,curr):
    # Now check monotonicity and update  prev so next time round we compare
    # against this row
+    
+
     for i in range(9):
         if curr[i] <  prev[i]:  #E2
-            print("Monotonic error at column %d comparing lines %d and %d  "%(i,n-1,n),
-                     "values %d and %d"%(curr[i],prev[i]))
+            print("Monotonic error at column %d comparing lines %d and %d "%(i,n-1,n),
+                     "values %d and %d "%(curr[i],prev[i]))
         prev[i]=curr[i]  
+
+
+    
 
 
 def check_row(n, prev, curr_str):
     data = curr_str
     curr = []
+
     for d in data: #E3
         try:
             v = int(d)
@@ -42,6 +48,7 @@ def check_row(n, prev, curr_str):
         except ValueError:  # missing data so can't convert
             return False
     computed = calc_total(curr)
+
     if computed != curr[0]:
         print("Sum error at line ",n, curr_str,
               "computed %d and expected %d"%(computed, curr[0]))
@@ -49,7 +56,9 @@ def check_row(n, prev, curr_str):
     return True # if there all data was there
 
 
-def main():
+def main(origin):
+   
+
     if "http" in origin:
         ctx = ssl._create_unverified_context()
         inp = urllib.request.urlopen(origin, context=ctx)
@@ -72,4 +81,5 @@ def main():
     print("There were ",missing," missing lines")
 
 if __name__=="__main__":
-    main()
+    origin=sys.argv[1]
+    main(origin)
