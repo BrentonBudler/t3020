@@ -1,5 +1,5 @@
 
-print("Scott was here")
+print("Scott was here.") #Thank you for your contributuion 
 import urllib
 import urllib.request
 import ssl
